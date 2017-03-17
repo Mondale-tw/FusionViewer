@@ -8,6 +8,7 @@ annotations and coverage information.
 Inputs
 
 - FusionMap called fusions
+- BAM/SAM files
 - others to be added.
 
 Outputs
