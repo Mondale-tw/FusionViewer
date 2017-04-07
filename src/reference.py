@@ -6,7 +6,6 @@ which are usuallystored in FASTA and FAI (index) files.
 
 import pyfasta
 
-
 class Reference():
     """The Reference class is the main interface to FASTA data.
     """
@@ -23,6 +22,17 @@ class Reference():
             Exception(): when loading failed
         """
         self.name = fasta
+        
+    def get_reference_name(self):
+        """Get reference name(path)
+        
+        Args:
+            none
+
+        Return:
+            str, the name (path) of the reference
+        """
+        return self.name
 
     def get_sequence(self, chr, start, end):
         """Get the raw sequence at "chr" from "start" to "end"-1
@@ -40,13 +50,14 @@ class Reference():
             ref.get_sequence("chr1",1,9) should return the bases 1~8 on chr1.
         """
 
-    def get_info(self):
+    def get_reference_length(self):
         """Get the reference information
 
         Args:
             None
 
         Return:
-            dict, a dictionary containing all chrmosome names and lengths
+            dict, a dictionary with chrmosome names as keys and lengths as
+                  values
         """
 
