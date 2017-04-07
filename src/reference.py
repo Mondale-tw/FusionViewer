@@ -22,6 +22,10 @@ class Reference():
             Exception(): when loading failed
         """
         self.name = fasta
+        self.fasta = pyfasta.Fasta(fasta)
+        self.length = {}
+        for chrom in self.fasta.keys():
+            self.length[chrom] = len(self.fasta[chrom])
         
     def get_reference_name(self):
         """Get reference name(path)
@@ -35,7 +39,8 @@ class Reference():
         return self.name
 
     def get_sequence(self, chr, start, end):
-        """Get the raw sequence at "chr" from "start" to "end"-1
+        """Get the raw sequence at "chr" from "start" to "end",
+           as in one-based coordinate system.
         
         Args:
             chr (str): name of the chromosome
@@ -47,11 +52,12 @@ class Reference():
             str, the raw sequence
             
         Example:
-            ref.get_sequence("chr1",1,9) should return the bases 1~8 on chr1.
+            ref.get_sequence("chr1",1,9) should return bases 1~9 on chr1.
         """
+        return self.fasta.sequence({'chr': chr, 'start': start, 'stop': end})
 
     def get_reference_length(self):
-        """Get the reference information
+        """Get the reference length information
 
         Args:
             None
@@ -60,4 +66,5 @@ class Reference():
             dict, a dictionary with chrmosome names as keys and lengths as
                   values
         """
+        return self.length
 
