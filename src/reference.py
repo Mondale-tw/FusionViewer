@@ -6,7 +6,7 @@ which are usuallystored in FASTA and FAI (index) files.
 
 import pyfasta
 
-class Reference():
+class Reference(object):
     """The Reference class is the main interface to FASTA data.
     """
     

@@ -1,7 +1,7 @@
 #i make a class to import a SAM file and Parse it"
 import pysam
 
-class Bam():
+class Bam(object):
 
 
 	def __init__ (self, bam):
