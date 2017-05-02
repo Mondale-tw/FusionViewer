@@ -1,3 +1,5 @@
 numpy
 pyfasta
 pysam
+biopython
+reportlab
